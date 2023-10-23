@@ -3,56 +3,52 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Author</th>
-                                <th>Title</th>
-                                <th>Category</th>
-                                <th>Status</th>
-                                <th>Image</th>
-                                <th>Tags</th>
-                                <th>Comments</th>
-                                <th>Date</th>
+                                <th>Username</th>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Email</th>
+                                <th>Role</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             
-                            $query = "SELECT * FROM posts";
-                            $select_posts = mysqli_query($connection, $query);
+                            $query = "SELECT * FROM users";
+                            $select_users = mysqli_query($connection, $query);
 
                             //LOOP FOR ADDING THE CATEGORIES IN CATEGORIES.PHP PAGE
-                            while($row = mysqli_fetch_assoc($select_posts)) {
-                                $post_id = $row['post_id'];
-                                $post_author = $row['post_author'];
-                                $post_title = $row['post_title'];
-                                $post_category_id = $row['post_category_id'];
-                                $post_status = $row['post_status'];
-                                $post_image = $row['post_image'];
-                                $post_tags = $row['post_tags'];
-                                $post_comment_count = $row['post_comment_count'];
-                                $post_date = $row['post_date'];
+                            while($row = mysqli_fetch_assoc($select_users)) {
+                                $user_id = $row['user_id'];
+                                $username = $row['username'];
+                                $user_password = $row['user_password'];
+                                $user_firstname = $row['user_firstname'];
+                                $user_lastname = $row['user_lastname'];
+                                $user_email = $row['user_email'];
+                                $user_image = $row['user_image'];
+                                $user_role = $row['user_role'];
 
                                 echo "<tr>";
-                                echo "<td>{$post_id}</td>";
-                                echo "<td>{$post_author}</td>";
-                                echo "<td>{$post_title}</td>";
+                                echo "<td>{$user_id}</td>";
+                                echo "<td>{$username}</td>";
+                                echo "<td>{$user_firstname}</td>";
                                 
-                                $query = "SELECT * FROM category WHERE cat_id = {$post_category_id} ";
-                                $select_categories_id = mysqli_query($connection, $query);
+                                //$query = "SELECT * FROM category WHERE cat_id = {$post_category_id} ";
+                                //$select_categories_id = mysqli_query($connection, $query);
 
                                 //LOOP FOR ADDING THE CATEGORIES IN CATEGORIES.PHP PAGE
-                                while($row = mysqli_fetch_assoc($select_categories_id)) {
-                                    $cat_id = $row['cat_id'];
-                                    $cat_title = $row['cat_title'];
+                                //while($row = mysqli_fetch_assoc($select_categories_id)) {
+                                //    $cat_id = $row['cat_id'];
+                                //    $cat_title = $row['cat_title'];
                                 
-                                    echo "<td>{$cat_title}</td>";
-                                }
-                                echo "<td>{$post_status}</td>";
-                                echo "<td><img width='100' src='../images/{$post_image}'></td>";
-                                echo "<td>{$post_tags}</td>";
-                                echo "<td>{$post_comment_count}</td>";
-                                echo "<td>{$post_date}</td>";
-                                echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a></td>";
-                                echo "<td><a href='posts.php?delete={$post_id}'>Delete</a></td>";
+                                //    echo "<td>{$cat_title}</td>";
+                                //}
+                                echo "<td>{$user_lastname}</td>";
+                                echo "<td>{$user_email}</td>";
+                                echo "<td>{$user_role}</td>";
+                                echo "<td><a href='users.php?change_to_admin=$user_id'>Admin</a></td>";
+                                echo "<td><a href='users.php?change_to_sub=$user_id'>Subscriber</a></td>";
+                                echo "<td><a href='users.php?source=edit_users&edit_users=$user_id'>Edit</a></td>";
+                                echo "<td><a href='users.php?delete=$user_id'>Delete</a></td>";
                                 echo "</tr>";
                             }
                             
@@ -62,12 +58,29 @@
                     </table>
 
                     <?php
+
+                    //CHANGE TO ADMIN
+                    if(isset($_GET['change_to_admin'])) {
+                        $the_user_id = $_GET['change_to_admin'];
+                        $query = "UPDATE users SET USER_ROLE = 'admin' WHERE user_id = {$the_user_id}";
+                        $change_to_admin_query = mysqli_query($connection, $query);
+                        header("Location: users.php");
+                    }
+
+                    //CHANGE TO SUBSCRIBER
+                    if(isset($_GET['change_to_sub'])) {
+                        $the_user_id = $_GET['change_to_sub'];
+                        $query = "UPDATE users SET USER_ROLE = 'subscriber' WHERE user_id = {$the_user_id}";
+                        $change_to_sub_query = mysqli_query($connection, $query);
+                        header("Location: users.php");
+                    }
                     
                     //ADDING DELETING OPTION
                     if(isset($_GET['delete'])) {
-                        $the_post_id = $_GET['delete'];
-                        $query = "DELETE FROM posts WHERE post_id = {$the_post_id}";
-                        $delete_query = mysqli_query($connection, $query);
+                        $the_user_id = $_GET['delete'];
+                        $query = "DELETE FROM users WHERE user_id = {$the_user_id}";
+                        $delete_user_query = mysqli_query($connection, $query);
+                        header("Location: users.php");
                     }
                     
                     ?>

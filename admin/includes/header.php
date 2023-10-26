@@ -1,7 +1,16 @@
 <?php ob_start() ?> <!-- Redirecting piece of code later on. Later when we use function header() to redirect, so it's in charge of sending request
 in the headers of scripts so when we are done with script, it will send it all in same time. -->
+<?php session_start(); ?>
 <?php include "../includes/db.php"; ?>
 <?php include "functions.php"; ?>
+
+
+<?php
+if(!isset($_SESSION['user_role'])) {
+    header("Location: ../index.php");
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">

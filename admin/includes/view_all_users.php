@@ -1,4 +1,4 @@
-<?php echo "hello"; ?>
+
 <table class="table table-bordered table-hover">
                         <thead>
                             <tr>

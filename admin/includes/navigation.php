@@ -15,7 +15,9 @@
                 <li><a href="../index.php">HOME SITE</a></li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo $_SESSION['firstname']; echo ' '; echo $_SESSION['lastname']; ?><b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
+                    <?php if(isset($_SESSION['username'])) {echo $_SESSION['username'];} ?>
+                    <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -47,7 +49,7 @@
                     <li>
                         <a href="./categories.php"><i class="fa fa-fw fa-wrench"></i> Categories </a>
                     </li>
-                    <li class="active">
+                    <li class="">
                         <a href="./comments.php"><i class="fa fa-fw fa-file"></i> Comments</a>
                     </li>
                     <li>

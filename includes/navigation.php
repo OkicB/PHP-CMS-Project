@@ -26,6 +26,9 @@
                     <li>
                         <a href="admin">Admin</a>
                     </li>
+                    <li>
+                        <a href="registration.php">Registration</a>
+                    </li>
                     <?php
                     //its not displaying this on navbar
                     if(isset($_SESSION['user_role'])) {

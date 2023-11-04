@@ -27,6 +27,10 @@ if(isset($_POST['login'])) {
         $db_role = $row['user_role'];
     }
 
+    //crypt func when finishes converting it will turn password to the first one that user created, it won't take the random or default enc pass
+    //otherwise it will not allow login, as it will recognize that enc pass as appropriate pass, not the one user created
+    $password = crypt($password, $db_password);
+
     //validation
     if($username === $db_username && $password === $db_password) {
         //value that we are bringing from db, we assign it to a session called username

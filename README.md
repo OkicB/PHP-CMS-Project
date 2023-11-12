@@ -20,7 +20,7 @@ Detailed documentation is available [here](link-to-documentation).
 
 ## Contributing
 
-Contributions are welcome! If you find a bug or have a feature request, please [open an issue]([https://github.com/OkicB/PHP-CMS-Project/issues]).
+Contributions are welcome! If you find a bug or have a feature request, please [open an issue](https://github.com/OkicB/PHP-CMS-Project/issues).
 
 ## Technology Stack
 

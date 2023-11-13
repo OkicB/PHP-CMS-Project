@@ -1,6 +1,6 @@
 # PHP CMS for Blog Management
 
-Welcome to the PHP Content Management System (CMS) designed for seamless blog management. This CMS empowers you to effortlessly create, manage, and customize your blog. The intuitive admin panel ensures a smooth experience for users, allowing them to log in, create posts, manage comments, and more.
+Welcome to the PHP Content Management System (CMS) designed for seamless blog management! This CMS empowers you to effortlessly create, manage, and customize your blog. The intuitive admin panel ensures a smooth experience for users, allowing them to log in, create posts, manage comments, and more.
 
 ## Key Features
 
